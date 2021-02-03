@@ -8,7 +8,8 @@ license = "MIT"
 repository = "https://github.com/oefd/tokio-socketcan"
 
 [dependencies]
-socketcan = "1.7"
+# socketcan = "1.7"
+socketcan = { git = "https://github.com/j4r0u53k/socketcan-rs.git", branch = "can-fd" }
 futures = "0.3"
 mio = "0.6"
 libc = "0.2"
@@ -18,3 +19,6 @@ tokio = { version = "0.2", features = ["net", "macros"] }
 [dev-dependencies]
 futures-timer = "3.0"
 futures-util = "0.3"
+
+[features]
+can_fd = []

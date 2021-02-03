@@ -135,6 +135,11 @@ impl CANSocket {
         Ok(CANSocket(PollEvented::new(EventedCANSocket(sock))?))
     }
 
+    #[cfg(feature = "can_fd")]
+    pub fn set_fd_frames(&self, enable: bool) -> io::Result<()> {
+        self.0.get_ref().0.set_fd_frames(enable)
+    }
+
     /// Sets the filter mask on the socket
     pub fn set_filter(&self, filters: &[socketcan::CANFilter]) -> io::Result<()> {
         self.0.get_ref().0.set_filter(filters)
